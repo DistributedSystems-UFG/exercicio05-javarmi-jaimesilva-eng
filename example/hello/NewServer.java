@@ -3,14 +3,12 @@ package example.hello;
 import java.rmi.Naming;
 import java.rmi.registry.Registry;
 import java.rmi.registry.LocateRegistry;
-import java.rmi.RemoteException;
-import java.rmi.server.UnicastRemoteObject;
 
-public class Server {
+public class NewServer {
 
-    public Server() {}
+    public NewServer() {}
 
-    public static void main(String args[]) {
+    public static void main(String[] args) {
         try {
             try {
                 LocateRegistry.createRegistry(Registry.REGISTRY_PORT);
@@ -19,13 +17,13 @@ public class Server {
                 System.out.println("RMI registry já existe na porta 1099.");
             }
 
-            HelloImplem obj = new HelloImplem(5678);
-            Naming.rebind("MyHello", obj);
+            CalculatorImplem obj = new CalculatorImplem(5679);
+            Naming.rebind("MyCalculator", obj);
 
-            System.out.println("Hello Server ready");
+            System.out.println("Calculator Server ready");
         } catch (Exception e) {
-            System.err.println("Server exception: " + e.toString());
+            System.err.println("CalculatorServer exception: " + e.toString());
             e.printStackTrace();
         }
-    }   
-}	    
+    }
+}

@@ -26,6 +26,21 @@ public class Client {
 
             int result = stub.soma(100,1000);
             System.out.println("Response from soma: " + result);
+
+            int resultSubtrai = stub.subtrai(50, 20);
+            System.out.println("Response from subtrai: " + resultSubtrai);
+
+            String resultConcatena = stub.concatena("Olá, ", "mundo!");
+            System.out.println("Response from concatena: " + resultConcatena);
+
+            Calculator calcStub = (Calculator) Naming.lookup("rmi://" + host + "/MyCalculator");
+            System.out.println("Found Calculator server");
+
+            int resultMultiplica = calcStub.multiplica(8, 7);
+            System.out.println("Response from multiplica: " + resultMultiplica);
+
+            double resultDivide = calcStub.divide(20, 4);
+            System.out.println("Response from divide: " + resultDivide);
             
         } catch (Exception e) {
             System.err.println("Client exception: " + e.toString());
